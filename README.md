@@ -4,7 +4,7 @@ Repo of shells built in only assembly :(
 
 #### macOS-Reverse-Shell.asm
 macOS reverse shell for intel architecture. 
-- Depending on the IP and port utilized this shellcode may be null-byte free. The IP address and port may introduce null-bytes depending on the values. By default the IP address is set to 127.0.0.1 which will result in (01 00 00 7f) introducing null-bytes. The defaul port is 4444 and does not introduce null-bytes.
+- Depending on the IP and port utilized this shellcode may be null-byte free. The IP address and port may introduce null-bytes depending on the values. By default the IP address is set to 127.0.0.1 which will result in (01 00 00 7f) introducing null-bytes. The default port is 4444 and does not introduce null-bytes.
 
 ##### How To Compile
 ```
