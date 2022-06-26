@@ -1,6 +1,6 @@
 ### assembly-shells
 
-Repo of shells built in only assembly :(
+Repo of shells written in only assembly :(
 
 #### macOS-Reverse-Shell.asm
 macOS reverse shell for intel architecture. 
