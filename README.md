@@ -8,8 +8,8 @@ macOS reverse shell for intel architecture.
 
 ##### How To Compile
 ```
-nasm -f macho64 macOS-Reverse-Shell.asm
-ld -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem macOS-Reverse-Shell.o -o revshell
+$ nasm -f macho64 macOS-Reverse-Shell.asm
+$ ld -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem macOS-Reverse-Shell.o -o revshell
 ```
 
 #### macOS-Bind-Shell.asm
