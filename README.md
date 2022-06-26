@@ -13,7 +13,14 @@ $ ld -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem mac
 ```
 
 #### macOS-Bind-Shell.asm
-macOS bind shell for intel architecture.
+Null-byte free macOS bind shell for intel architecture.
+- Default IP = 127.0.0.1, Default Port = 4444
+
+##### How To Compile
+```
+$ nasm -f macho64 macOS-Bind-Shell.asm
+$ ld -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem macOS-Bind-Shell.o -o bindshell
+```
 
 #### linux-x64-reverse-shell.asm
 linux reverse shell
