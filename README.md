@@ -24,6 +24,3 @@ $ ld -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib -lSystem mac
 
 #### linux-x64-reverse-shell.asm
 linux reverse shell
-
-#### windows-position-independent-shellcode.asm
-Windows position independent shellcode 
