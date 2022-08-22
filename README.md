@@ -1,3 +1,18 @@
+Reverse Shell
+1) Execute Socket
+2) Connect with socket from (1), ip and port here
+3) dup2 to redirect stdin, stdout and stderr
+4) execve to run shell
+
+Bind Shell
+1) Execute Socket
+2) Bind addr with socket from (1), ip and port here
+3) Listen the socket
+4) Accept connection
+5) dup2 to redirect stdin, stdout and stderr
+6) execve to run shell
+
+
 ### assembly-shells
 
 Repo of shells written in only assembly :(
